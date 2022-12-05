@@ -3,6 +3,7 @@ import {auth, googleAuthProvider} from '../lib/firebase';
 import {useContext} from 'react';
 import {UserContext} from '../lib/context';
 import toast from 'react-hot-toast';
+import Image from 'next/image';
 
 export default function EnterPage() {
     const {user, username} = useContext(UserContext);
