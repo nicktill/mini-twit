@@ -2,6 +2,7 @@
 import {auth, googleAuthProvider} from '../lib/firebase';
 import {useContext} from 'react';
 import {UserContext} from '../lib/context';
+import toast from 'react-hot-toast';
 
 export default function EnterPage() {
     const {user, username} = useContext(UserContext);
@@ -19,12 +20,14 @@ export default function EnterPage() {
     );
 }
 
+console.log("AUTH HERE", auth.currentUser.metadata.creationTime)
+
 // call signInWithPopup providing googleAuthProvider from Firebase setup
 function SignInButton() {
    const signInWithGoogle = async () => {
         await auth.signInWithPopup(googleAuthProvider);
-    };
-
+        toast.success('Hello! ' + auth.currentUser.email);
+   }
     return (
         <button className="btn-google" onClick={signInWithGoogle}>
           <img src={'/google.png'} /> Sign in with Google
@@ -34,8 +37,14 @@ function SignInButton() {
 
 // sign out button
 function SignOutButton() {
-    return <button onClick={() => auth.signOut()}>Sign Out</button>;
+    return <button onClick={() => {
+        toast('See you later!', {
+            icon: '👋 ',
+          });
+        auth.signOut()
+    }}>Sign Out</button>;
 }
+
 
 // username form to select username
 function UsernameForm() {
@@ -44,7 +53,7 @@ function UsernameForm() {
             <h3>Choose Username</h3>
             <input name="username" placeholder="username" />
             <button type="submit">Choose</button>
-            <button onClick={() => auth.signOut()} type="logout">Logout</button>
+            <SignOutButton />
 
         </main>
     )
