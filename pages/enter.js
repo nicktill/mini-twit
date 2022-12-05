@@ -21,7 +21,7 @@ export default function EnterPage() {
     );
 }
 
-console.log("AUTH HERE", auth.currentUser.metadata.creationTime)
+// console.log("AUTH HERE", auth.currentUser.metadata.creationTime)
 
 // call signInWithPopup providing googleAuthProvider from Firebase setup
 function SignInButton() {
@@ -31,7 +31,7 @@ function SignInButton() {
    }
     return (
         <button className="btn-google" onClick={signInWithGoogle}>
-          {/* <Image src={'/google.png'} alt="googlepng"/> Sign in with Google */}
+          <Image src={'/google.png'} alt="googlepng"/> Sign in with Google
         </button>
       );
 }
@@ -55,7 +55,6 @@ function UsernameForm() {
             <input name="username" placeholder="username" />
             <button type="submit">Choose</button>
             <SignOutButton />
-
         </main>
     )
 }
