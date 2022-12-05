@@ -1,8 +1,51 @@
 
+import {auth, googleAuthProvider} from '../lib/firebase';
+import {useContext} from 'react';
+import {UserContext} from '../lib/context';
+
 export default function EnterPage() {
+    const {user, username} = useContext(UserContext);
+    // 1. user signed out <SignInButton />
+    // 2. user signed in, but missing username <UsernameForm />
+    // 3. user signed in, has username <SignOutButton />
     return (
         <main>
-            <h1>Sign Up</h1> 
+        {user ? 
+            !username ? <UsernameForm /> : <SignOutButton /> 
+            : 
+            <SignInButton />
+        }
+        </main>
+    );
+}
+
+// call signInWithPopup providing googleAuthProvider from Firebase setup
+function SignInButton() {
+   const signInWithGoogle = async () => {
+        await auth.signInWithPopup(googleAuthProvider);
+    };
+
+    return (
+        <button className="btn-google" onClick={signInWithGoogle}>
+          <img src={'/google.png'} /> Sign in with Google
+        </button>
+      );
+}
+
+// sign out button
+function SignOutButton() {
+    return <button onClick={() => auth.signOut()}>Sign Out</button>;
+}
+
+// username form to select username
+function UsernameForm() {
+    return (
+        <main>
+            <h3>Choose Username</h3>
+            <input name="username" placeholder="username" />
+            <button type="submit">Choose</button>
+            <button onClick={() => auth.signOut()} type="logout">Logout</button>
+
         </main>
     )
 }
