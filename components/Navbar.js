@@ -27,7 +27,7 @@ export default function Navbar() {
                 </li>
                 <li>
                 <Link href={`/${username}`}>
-                    <Image src={user?.photoURL} alt="profile" />
+                    {/* <Image src={user?.photoURL} alt="profile" /> */}
                 </Link>
                 </li>
                 </>
