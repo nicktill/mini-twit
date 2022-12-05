@@ -20,9 +20,6 @@ export default function EnterPage() {
         </main>
     );
 }
-
-// console.log("AUTH HERE", auth.currentUser.metadata.creationTime)
-
 // call signInWithPopup providing googleAuthProvider from Firebase setup
 function SignInButton() {
    const signInWithGoogle = async () => {

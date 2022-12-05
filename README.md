@@ -34,6 +34,7 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
 ## Useful Information from Firebase Auth 
+
 `auth.currentUser.metadata.creationTime` - time when user created account, good for user dashboard
 `auth.currentUser.username` - username of the user 
 `auth.currentUser.username.email` - email of the user
