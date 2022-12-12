@@ -3,6 +3,7 @@ import { toast } from 'react-hot-toast';
 import { useContext } from 'react';
 import { UserContext } from '../lib/context';
 import Link from 'next/link';
+import MustSignIn from '../components/MustSignIn';
 
 function TweetForm() {
   const [inputValue, setInputValue] = useState('');
@@ -17,10 +18,8 @@ function TweetForm() {
 
 // ensure we have a user to show the tweet form
   if (!user || !username) {
-    return(
-        <Link href="/enter">
-        <button className="bg-transparent text-sky-300 outline font-bold py-2 px-4 rounded-full"></button>
-        </Link>
+    return (
+        <MustSignIn />
     )
   }
 
