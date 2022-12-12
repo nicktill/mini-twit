@@ -3,14 +3,12 @@ import { UserContext } from '../lib/context';
 import { Home } from './index';
 import { useEffect, useState, useCallback, useContext } from 'react';
 import debounce from 'lodash.debounce';
-import { Router } from 'next/router';
 import { useRouter } from 'next/router';
 import toast from 'react-hot-toast';
 
 
 export default function Enter(props) {
   const { user, username } = useContext(UserContext);
-
   // 1. user signed out <SignInButton />
   // 2. user signed in, but missing username <UsernameForm />
   // 3. user signed in, has username <SignOutButton />

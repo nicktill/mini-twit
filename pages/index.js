@@ -22,7 +22,7 @@ export default function Home() {
 }
 
 
-// button which on click will show a toast tweet success
-   {/* <button className="" onClick={() => toast.success('tweeted!')}>
-        tweet 
-      </button> */}
+// // button which on click will show a toast tweet success
+//    {/* <button className="" onClick={() => toast.success('tweeted!')}>
+//         tweet 
+//       </button> */}
