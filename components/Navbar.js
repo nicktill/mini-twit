@@ -47,15 +47,6 @@ export default function Navbar() {
                 </Link>
             </li>
             )}
-            {/* {username && user (
-            <li>
-                <button className="bg-transparent text-sky-300 outline font-bold py-2 px-4 rounded-full" onClick={() => {
-                    auth.signOut();
-                    toast.success('Signed out!');
-                }}>Log out</button>
-            </li>
-            )} */}
-
         </ul>
         </nav>
     );

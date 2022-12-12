@@ -22,23 +22,30 @@ export default function Enter(props) {
   );
 }
 
-// Sign in with Google button
 function SignInButton() {
   const signInWithGoogle = async () => {
     await auth.signInWithPopup(googleAuthProvider);
   };
 
   return (
-      // <button className="btn-google" onClick={signInWithGoogle}>
-      <button className="btn-google" onClick={() => {
-        signInWithGoogle().then(() => {
-          toast.success('Welcome to Mini-Twit: ' + auth.currentUser.displayName);
-        });
-      }}>
-        <img src={'/google.png'} width="30px" /> Sign in with Google
-      </button>
+    <div className="bg-white px-4 py-8 rounded-2xl flex flex-col items-center justify-center w-1/2 mx-auto">
+      <h1 className="text-sky-300 text-3xl font-bold mb-4">Mini-Twit</h1>
+      <p className="text-center mb-4">Welcome to Mini-Twit. Please sign in to continue.</p>
+      <div className="flex mt-4">
+        <button className="btn-google ml-4" onClick={() => {
+          signInWithGoogle().then(() => {
+            toast.success('Welcome to Mini-Twit: ' + auth.currentUser.displayName);
+          });
+        }}>
+          <img src={'/google.png'} width="30px" /> Sign in with Google
+        </button>
+      </div>
+    </div>
   );
 }
+
+
+
 
 function IndexPage() {
   const router = useRouter();
@@ -120,7 +127,7 @@ function UsernameForm() {
         <form onSubmit={onSubmit}>
           <input name="username" placeholder="myname" value={formValue} onChange={onChange} />
           <UsernameMessage username={formValue} isValid={isValid} loading={loading} />
-          <button type="submit" className="btn-green" disabled={!isValid}>
+          <button type="submit" className="bg-sky-300 text-white font-bold py-2 px-4 rounded-full" disabled={!isValid}>
             Choose
           </button>
           <h3 className="font-bold">Username Available:</h3>
