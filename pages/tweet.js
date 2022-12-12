@@ -41,7 +41,7 @@ function TweetForm() {
         </button>
       </div>
       {tweets.map((tweet) => (
-        <div className="mt-4">
+        <div className="mt-4" key={tweet.id}>
           <div className="bg-white rounded-lg p-4 shadow" style={{ width: '300px', margin: 'auto' }}>
             <div className="flex justify-between items-center px-4">
               {user?.photoURL && (
@@ -49,8 +49,8 @@ function TweetForm() {
                   className="rounded-full"
                   src={user?.photoURL} 
                   alt="profile_picture"
-                  width="30px"
-                  height="30px"
+                  width="40px"
+                  height="40px"
                 />
               )}
               <div className="font-bold text-gray-300">{'@'}{username}</div>

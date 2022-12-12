@@ -1,10 +1,3 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
-import Link from 'next/link'
-import Loader from '../components/Loader'
-import toast from 'react-hot-toast';
-import { auth } from '../lib/firebase'
 import { useContext } from 'react';
 import { UserContext } from '../lib/context';
 
@@ -20,9 +13,3 @@ export default function Home() {
       </div>
   );
 }
-
-
-// // button which on click will show a toast tweet success
-//    {/* <button className="" onClick={() => toast.success('tweeted!')}>
-//         tweet 
-//       </button> */}
