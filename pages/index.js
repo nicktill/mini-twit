@@ -5,22 +5,18 @@ import Link from 'next/link'
 import Loader from '../components/Loader'
 import toast from 'react-hot-toast';
 import { auth } from '../lib/firebase'
+import { useContext } from 'react';
+import { UserContext } from '../lib/context';
 
 export default function Home() {
-
-  function SignOutButton() {
-    return <button className="outline bg-transparent text-sky-400 font-bold py-2 px-4 rounded-full border border-sky-400" onClick={() => {
-      auth.signOut();
-      toast.success('Signed out!');
-    }}>Sign Out</button>;
-  }
+  
+  const { user, username } = useContext(UserContext);
+  console.log("User, Username Here" + user, username)
 
   return (
       <div className="flex flex-col items-center justify-center">
-        <h1 className="text-3xl font-bold text-sky-400">Welcome to Mini-Twit!</h1>
+        <h1 className="text-3xl font-bold text-sky-300 md: text-1xl">Welcome to Mini-Twit!</h1>
         <p className="text-xl">A twitter clone built with Next.js/Firebase</p>
-        {/* logut button */}
-        <SignOutButton />
       </div>
   );
 }
