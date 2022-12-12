@@ -23,14 +23,16 @@ export default function Navbar() {
             {username && (
                 <>
                 <li className="push-left">
+                <Link href="/tweet">
                     <button className="bg-transparent text-sky-300 outline font-bold py-2 px-4 rounded-full">Tweet</button>
+                </Link>
                 </li>
-                <li className="">
+                {/* <li className="">
                     <button className="bg-sky-300 text-white font-bold py-2 px-4 rounded-full" onClick={() => {
                         auth.signOut();
                         toast.success('Signed out!');
                     }}>Log Out</button>
-                </li>
+                </li> */}
                 <li>
                 <Link href={`/${username}`}>
                     <img src={user?.photoURL} alt="profile_picture" width="30px" height="30px" />

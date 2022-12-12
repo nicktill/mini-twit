@@ -3,12 +3,14 @@ import { UserContext } from '../lib/context';
 import { Home } from './index';
 import { useEffect, useState, useCallback, useContext } from 'react';
 import debounce from 'lodash.debounce';
+import { Router } from 'next/router';
 import { useRouter } from 'next/router';
 import toast from 'react-hot-toast';
 
 
 export default function Enter(props) {
   const { user, username } = useContext(UserContext);
+
   // 1. user signed out <SignInButton />
   // 2. user signed in, but missing username <UsernameForm />
   // 3. user signed in, has username <SignOutButton />
@@ -120,44 +122,41 @@ function UsernameForm() {
 
   return (
     !username && (
-      <div className="bg-white rounded-lg p-6 mx-auto max-w-lg">
-        <section className="px-4 py-6 mx-auto max-w-lg">
-          <h3 className="font-bold text-lg mb-4">Choose Username</h3>
-          <form onSubmit={onSubmit}>
-            <div className="relative rounded-md shadow-sm">
-              <input
-                name="username"
-                placeholder="myname"
-                value={formValue}
-                onChange={onChange}
-                className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-sky-500"
-              />
-              <UsernameMessage username={formValue} isValid={isValid} loading={loading} />
-            </div>
-            <button type="submit" className="mt-6 bg-sky-300 text-white font-bold py-2 px-4 rounded-full hover:bg-sky-400 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-sky-500" disabled={!isValid}>
-              Choose
-            </button>
-            <h3 className="font-bold mt-6">Username Available:</h3>
-            <div>
-              Username: {formValue}
-              <br />
-              Loading: {loading.toString()}
-              <br />
-              Username Valid: {isValid.toString()}
-            </div>
-          </form>
-        </section>
-      </div>
+      <section className="px-4 py-6 mx-auto max-w-lg">
+        <h3 className="font-bold text-lg mb-4">Choose Username</h3>
+        <form onSubmit={onSubmit}>
+          <div className="relative rounded-md shadow-sm">
+            <input
+              name="username"
+              placeholder="myname"
+              value={formValue}
+              onChange={onChange}
+              className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-sky-500"
+            />
+            <UsernameMessage username={formValue} isValid={isValid} loading={loading} />
+          </div>
+          <button type="submit" className="mt-6 bg-sky-300 text-white font-bold py-2 px-4 rounded-full hover:bg-sky-400 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-sky-500" disabled={!isValid}>
+            Choose
+          </button>
+          <h3 className="font-bold mt-6">Username Available:</h3>
+          <div>
+            Username: {formValue}
+            <br />
+            Loading: {loading.toString()}
+            <br />
+            Username Valid: {isValid.toString()}
+          </div>
+        </form>
+      </section>
     )
-  );
-  
+  );  
 }
 
 function UsernameMessage({ username, isValid, loading }) {
   if (loading) {
     return <p>Checking...</p>;
   } else if (isValid) {
-    return <p className="text-sky-300 font-bold mt-2">{username} is available!</p>;
+    return <p className="text-sky-500 font-bold">{username} is available!</p>;
   } else if (username && !isValid) {
     return <p className="text-danger">That username is taken!</p>;
   } else {
