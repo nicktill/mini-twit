@@ -13,7 +13,7 @@ export default function Navbar() {
         <ul>
             <li>
             <Link href="/">
-                <button className="btn-logo blue">mini-twit</button>
+                <button className="bg-sky-400 text-white font-bold py-2 px-4 rounded-full">mini-twit</button>
             </Link>
             </li>
 
@@ -22,12 +22,12 @@ export default function Navbar() {
                 <>
                 <li className="push-left">
                 <Link href="/admin">
-                    <button className="btn-blue">Write Posts</button>
+                    <button className="bg-sky-400 text-white font-bold py-2 px-4 rounded-full" >Write Posts</button>
                 </Link>
                 </li>
                 <li>
                 <Link href={`/${username}`}>
-                    {/* <Image src={user?.photoURL} alt="profile" /> */}
+                    <img src={user?.photoURL} alt="profile" width="30px" height="30px" />
                 </Link>
                 </li>
                 </>
@@ -37,7 +37,7 @@ export default function Navbar() {
             {!username && (
             <li>
                 <Link href="/enter">
-                <button className="btn-blue">Log in</button>
+                <button className="bg-transparent text-sky-500 outline font-bold py-2 px-4 rounded-full">Log in</button>
                 </Link>
             </li>
             )}

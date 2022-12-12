@@ -1,8 +1,12 @@
 import { auth, firestore, googleAuthProvider } from '../lib/firebase';
 import { UserContext } from '../lib/context';
-
+import { Home } from './index';
 import { useEffect, useState, useCallback, useContext } from 'react';
 import debounce from 'lodash.debounce';
+import { Router } from 'next/router';
+import { useRouter } from 'next/router';
+import toast from 'react-hot-toast';
+
 
 export default function Enter(props) {
   const { user, username } = useContext(UserContext);
@@ -13,7 +17,7 @@ export default function Enter(props) {
   return (
     <main>
       {/* <Metatags title="Enter" description="Sign up for this amazing app!" /> */}
-      {user ? !username ? <UsernameForm /> : <SignOutButton /> : <SignInButton />}
+      {user ? !username ? <UsernameForm /> : <IndexPage /> : <SignInButton />}
     </main>
   );
 }
@@ -25,15 +29,25 @@ function SignInButton() {
   };
 
   return (
-      <button className="btn-google" onClick={signInWithGoogle}>
+      // <button className="btn-google" onClick={signInWithGoogle}>
+      <button className="btn-google" onClick={() => {
+        signInWithGoogle().then(() => {
+          toast.success('Welcome to Mini-Twit: ' + auth.currentUser.displayName);
+        });
+      }}>
         <img src={'/google.png'} width="30px" /> Sign in with Google
       </button>
   );
 }
 
-// Sign out button
-function SignOutButton() {
-  return <button onClick={() => auth.signOut()}>Sign Out</button>;
+function IndexPage() {
+  const router = useRouter();
+  // redirect to the homepage when the component is rendered
+  useEffect(() => {
+    router.push('/');
+  }, []);
+
+  return null;
 }
 
 // Username form
@@ -109,8 +123,7 @@ function UsernameForm() {
           <button type="submit" className="btn-green" disabled={!isValid}>
             Choose
           </button>
-
-          <h3>Debug State</h3>
+          <h3 className="font-bold">Username Available:</h3>
           <div>
             Username: {formValue}
             <br />
