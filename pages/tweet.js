@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { useContext } from 'react';
 import { UserContext } from '../lib/context';
-import Link from 'next/link';
 import MustSignIn from '../components/MustSignIn';
 
 function TweetForm() {
@@ -24,7 +23,8 @@ function TweetForm() {
   }
 
   return (
-    <div className="bg-white rounded-lg p-4 shadow" style={{ width: '300px', margin: 'auto' }}>
+    <div>
+      <div className="bg-white rounded-lg p-4 shadow" style={{ width: '300px', margin: 'auto' }}>
         <input
           className="border rounded-lg p-2 w-full"
           type="text"
@@ -39,18 +39,29 @@ function TweetForm() {
         >
           Tweet
         </button>
-
-        {tweets.map((tweet) => (
-          <div
-            className="bg-white rounded-lg p-4 shadow"
-            style={{ width: '300px', margin: 'auto', marginTop: '16px' }}
-          > {username}
-            {user?.photoURL && (<img className="rounded-2xl" src={user?.photoURL} alt="profile_picture" width="30px" height="30px" />)}
-            {tweet.text}
+      </div>
+      {tweets.map((tweet) => (
+        <div className="mt-4">
+          <div className="bg-white rounded-lg p-4 shadow" style={{ width: '300px', margin: 'auto' }}>
+            <div className="flex justify-between items-center px-4">
+              {user?.photoURL && (
+                <img
+                  className="rounded-full"
+                  src={user?.photoURL} 
+                  alt="profile_picture"
+                  width="30px"
+                  height="30px"
+                />
+              )}
+              <div className="font-bold text-gray-300">{'@'}{username}</div>
+            </div>
+            <div className="text-sky-200 px-4 pt-4 pb-2 text-center">{tweet.text}</div>
           </div>
-        ))}
+        </div>
+      ))}
     </div>
-  );
+  );  
+  
 }
 
 export default TweetForm;
