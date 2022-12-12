@@ -23,6 +23,7 @@ export default function UserPage({}) {
         </span>
       </h1>
       <p className="text-center mb-4">You are signed in with <span className="text-sky-300"> {user.email} </span></p>
+      <p className="text-center">Account Created:</p> <span className="text-sky-300" >{auth.currentUser.metadata.creationTime} </span>
     <button className="bg-sky-300 text-white font-bold py-2 px-4 rounded-full" 
         onClick={ async () => {
             await auth.signOut().then(() => {
