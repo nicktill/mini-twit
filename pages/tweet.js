@@ -26,14 +26,14 @@ function TweetForm() {
     <div>
       <div className="bg-white rounded-lg p-4 shadow" style={{ width: '300px', margin: 'auto' }}>
         <input
-          className="border rounded-lg p-2 w-full"
+          className="border text-sm rounded-lg p-2 w-full text-black"
           type="text"
           value={inputValue}
           onChange={(event) => setInputValue(event.target.value)}
-          placeholder="Add your tweet here..."
+          placeholder="What's happening?"
         />
         <button
-          className="bg-sky-300 rounded-lg py-2 px-4 mt-4 text-white font-bold"
+          className="bg-transparent scale-75 text-sky-300 outline font-bold py-2 px-4 rounded-full"
           type="submit"
           onClick={handleSubmit}
         >
@@ -55,7 +55,7 @@ function TweetForm() {
               )}
               <div className="font-bold text-gray-300">{'@'}{username}</div>
             </div>
-            <div className="text-sky-200 px-4 pt-4 pb-2 text-center">{tweet.text}</div>
+            <div className="text-gray-600 px-4 pt-4">{tweet.text}</div>
           </div>
         </div>
       ))}

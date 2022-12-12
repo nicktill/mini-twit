@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { UserContext } from '../lib/context';
+import auth from '../lib/firebase';
 
 export default function Home() {
   
