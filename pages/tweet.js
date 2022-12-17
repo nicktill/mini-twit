@@ -74,12 +74,12 @@ function TweetForm() {
               </div>
             </div>
             {/* display the tweet text */}
-            <div className="text-gray-600 px-4 pt-4">{tweet.text}</div>
+            <div className="text-gray-500 px-4 pt-4">{tweet.text}</div>
             {/* add icons for favorite and reply */}
             <div className="flex justify-end items-center px-4 mt-2">
               {/* favorite icon */}
               <div
-                className={`cursor-pointer mr-2 ${
+                className={`cursor-pointer mr-2 transition ease-in-out delay-150 hover:scale-125 duration-300 hover:text-rose-300 ${
                   isLiked ? "text-rose-400" : "text-rose-200"
                 }`}
                 onClick={() => setLiked(!isLiked)}
@@ -87,7 +87,9 @@ function TweetForm() {
                 <FaHeart />
               </div>
               {/* reply icon */}
-              <div className="text-sky-200 hover:text-sky-300 cursor-pointer">
+              <div
+                className={`cursor-pointer text-sky-200 hover:scale-125 duration-300 hover:text-sky-300`}
+              >
                 <FaReply />
               </div>
             </div>

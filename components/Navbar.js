@@ -3,6 +3,8 @@ import { useContext } from "react";
 import { UserContext } from "../lib/context";
 import { auth } from "../lib/firebase";
 import { toast } from "react-hot-toast";
+import { AiOutlineMoon } from "react-icons/ai";
+import { AiOutlineSun } from "react-icons/ai";
 
 // Top navbar
 
@@ -19,7 +21,6 @@ export default function Navbar() {
             </button>
           </Link>
         </li>
-
         {/* user is signed-in and has username */}
         {user && username && (
           <>
@@ -36,6 +37,7 @@ export default function Navbar() {
                 onClick={() => {
                   auth.signOut();
                   toast.success("Signed out!");
+                  window.location.href = "/";
                 }}
               >
                 Log Out
